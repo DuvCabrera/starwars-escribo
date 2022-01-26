@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starwars_app/components/card.dart';
 import 'package:starwars_app/models/character.dart';
 import 'package:starwars_app/models/films.dart';
 
@@ -33,10 +34,10 @@ class _GridListWidgetState extends State<GridListWidget> {
     return ListView.builder(itemCount: list.length, itemBuilder: (context, index){
       if(widget.isFilm){
         final Film film = list[index];
-        return Card();
+        return CardWidget(name: film.title,);
       } else {
         final Character character = list[index];
-        return Card();
+        return CardWidget(name: character.name);
       }
     });
   }

@@ -4,7 +4,7 @@ Character characterFromJson(String str) => Character.fromJson(json.decode(str));
 
 String characterToJson(Character data) => json.encode(data.toJson());
 
-ListCharacter listCharacterFromJson(String str) => ListCharacter.fromJson(json.decode(str));
+ListCharacter listCharacterFromJson(String str) => ListCharacter.fromJson((str));
 
 String listCharacterToJson( ListCharacter data) => json.encode(data.toJson());
 

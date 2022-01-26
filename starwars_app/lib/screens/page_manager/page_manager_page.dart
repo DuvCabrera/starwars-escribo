@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'package:starwars_app/screens/avatar_change/avatar_change_page.dart';
+import 'package:starwars_app/screens/character_listing/character_listing_page.dart';
+import 'package:starwars_app/screens/films_listing/films_listing_page.dart';
 
 class PageManagerPage extends StatefulWidget {
   const PageManagerPage({Key? key}) : super(key: key);
@@ -10,42 +12,49 @@ class PageManagerPage extends StatefulWidget {
 }
 
 class _PageManagerPageState extends State<PageManagerPage> {
-
-
-
   @override
   Widget build(BuildContext context) {
-    bool onAvatar = false;
-    bool onSite = false;
     int currentIndex = 0;
-    final List<Widget> pages = [AvatarChangePage(),AvatarChangePage(),AvatarChangePage()];
+    final List<Widget> pages = [
+      FilmsListingPage(),
+      CharacterListingPage(),
+      AvatarChangePage()
+    ];
 
     return DefaultTabController(
       initialIndex: currentIndex,
       length: 3,
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(150),
-          child: AppBar(
-            title: ElevatedButton(onPressed: () {}, child: Text('Site Oficial')),
-            actions: [
-              GestureDetector(onTap: () {}, child: FluttermojiCircleAvatar(radius: 50,backgroundColor: Colors.black,),)
-            ],
-            bottom: const TabBar(tabs: [
-              Tab(
-                icon: Icon(Icons.home),
-              ),
-              Tab(
-                icon: Icon(Icons.home),
-              ),
-              Tab(
-                icon: Icon(Icons.home),
-              )
-            ]),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(150),
+            child: AppBar(
+              title:
+                  ElevatedButton(onPressed: () {}, child: Text('Site Oficial')),
+              actions: [
+                GestureDetector(
+                  onTap: () {},
+                  child: FluttermojiCircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.black,
+                  ),
+                )
+              ],
+              bottom: const TabBar(tabs: [
+                Tab(
+                  icon: Icon(Icons.home),
+                ),
+                Tab(
+                  icon: Icon(Icons.home),
+                ),
+                Tab(
+                  icon: Icon(Icons.home),
+                )
+              ]),
+            ),
           ),
-        ),
-        body: TabBarView(children: pages,)
-      ),
+          body: TabBarView(
+            children: pages,
+          )),
     );
   }
 }

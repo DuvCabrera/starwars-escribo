@@ -5,20 +5,21 @@ Film filmFromJson(String str) => Film.fromJson(json.decode(str));
 String filmToJson(Film data) => json.encode(data.toJson());
 
 
-Films filmsFromJson(String str) => Films.fromJson(json.decode(str));
+ListFilms filmsFromJson(String str) => ListFilms.fromJson(str);
 
-String filmsToJson(Film data) => json.encode(data.toJson());
+String filmsToJson(ListFilms data) => json.encode(data.toJson());
 
-class Films {
-  Films({
+class ListFilms {
+  ListFilms({
     required this.films,
   });
 
   List<Film> films;
 
-  factory Films.fromJson(Map<String, dynamic> json) => Films(
-    films: List<Film>.from(json["results"].map((x) => Film.fromJson(x))),
-  );
+  factory ListFilms.fromJson(String str) => ListFilms.fromMap(json.decode(str));
+
+  ListFilms.fromMap(Map<String, dynamic> json)
+    : films = List<Film>.from(json["results"].map((x) => Film.fromJson(x)));
 
   Map<String, dynamic> toJson() => {
     "results": List<dynamic>.from(films.map((x) => x.toJson())),
