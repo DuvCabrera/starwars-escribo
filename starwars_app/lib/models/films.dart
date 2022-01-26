@@ -1,11 +1,32 @@
 import 'dart:convert';
 
+Film filmFromJson(String str) => Film.fromJson(json.decode(str));
+
+String filmToJson(Film data) => json.encode(data.toJson());
+
+
 Films filmsFromJson(String str) => Films.fromJson(json.decode(str));
 
-String filmsToJson(Films data) => json.encode(data.toJson());
+String filmsToJson(Film data) => json.encode(data.toJson());
 
 class Films {
   Films({
+    required this.films,
+  });
+
+  List<Film> films;
+
+  factory Films.fromJson(Map<String, dynamic> json) => Films(
+    films: List<Film>.from(json["results"].map((x) => Film.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "results": List<dynamic>.from(films.map((x) => x.toJson())),
+  };
+}
+
+class Film {
+  Film({
     required this.title,
     required this.episodeId,
     required this.openingCrawl,
@@ -37,7 +58,7 @@ class Films {
   DateTime edited;
   String url;
 
-  factory Films.fromJson(Map<String, dynamic> json) => Films(
+  factory Film.fromJson(Map<String, dynamic> json) => Film(
     title: json["title"],
     episodeId: json["episode_id"],
     openingCrawl: json["opening_crawl"],

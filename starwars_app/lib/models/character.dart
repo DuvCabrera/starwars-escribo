@@ -4,6 +4,28 @@ Character characterFromJson(String str) => Character.fromJson(json.decode(str));
 
 String characterToJson(Character data) => json.encode(data.toJson());
 
+ListCharacter listCharacterFromJson(String str) => ListCharacter.fromJson(json.decode(str));
+
+String listCharacterToJson( ListCharacter data) => json.encode(data.toJson());
+
+class ListCharacter{
+  final List<Character> characters;
+
+  ListCharacter(this.characters);
+
+  factory ListCharacter.fromJson(String str) => ListCharacter.fromMap(json.decode(str));
+
+  ListCharacter.fromMap(Map<String, dynamic> json)
+      : characters = List<Character>.from(json['results'].map((x) => Character.fromJson(x)));
+
+  Map<String, dynamic> toJson() => {
+    'results' : List<dynamic>.from(characters.map((x) => x.toJson()))
+  };
+
+}
+
+
+
 class Character {
   Character({
     required this.name,

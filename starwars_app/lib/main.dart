@@ -14,7 +14,8 @@ class StarWarsApp extends StatelessWidget {
     return MaterialApp(
       title: 'StarWars',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+
       ),
       home: PageManagerPage(),
     );
