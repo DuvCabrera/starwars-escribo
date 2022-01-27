@@ -3,6 +3,7 @@ import 'package:starwars_app/contants.dart';
 import 'package:starwars_app/database/app_database.dart';
 import 'package:starwars_app/models/character.dart';
 import 'package:starwars_app/models/favorite.dart';
+import 'package:starwars_app/models/films.dart';
 
 class StarWarsDao {
   static const String tableSql = 'CREATE TABLE $_tableName('
@@ -22,9 +23,9 @@ class StarWarsDao {
     return db.insert(_tableName, favorite.toMap());
   }
 
-  Future<int> saveFilm(Character character) async {
+  Future<int> saveFilm(Film films) async {
     final Database db = await createDataBase();
-    final String json = characterToJson(character);
+    final String json = filmToJson(films);
     final Favorite favorite = Favorite(json, film);
     return db.insert(_tableName, favorite.toMap());
   }

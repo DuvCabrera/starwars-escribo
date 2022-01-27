@@ -3,6 +3,7 @@ import 'package:fluttermoji/fluttermoji.dart';
 import 'package:starwars_app/screens/avatar_change/avatar_change_page.dart';
 import 'package:starwars_app/screens/character_listing/character_listing_page.dart';
 import 'package:starwars_app/screens/films_listing/films_listing_page.dart';
+import 'package:starwars_app/screens/official_site/official_site_page.dart';
 
 class PageManagerPage extends StatefulWidget {
   const PageManagerPage({Key? key}) : super(key: key);
@@ -28,8 +29,14 @@ class _PageManagerPageState extends State<PageManagerPage> {
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(150),
             child: AppBar(
-              title:
-                  ElevatedButton(onPressed: () {}, child: Text('Site Oficial')),
+              title: ElevatedButton(style: ElevatedButton.styleFrom(primary: Colors.black),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OfficialSitePage()));
+                  },
+                  child: const Text('Site Oficial',style: TextStyle(color: Colors.amber),)),
               actions: [
                 GestureDetector(
                   onTap: () {},
