@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:starwars_app/screens/page_manager/page_manager_page.dart';
+
+import 'models/favorite_list.dart';
 
 void main() {
   runApp(const StarWarsApp());
@@ -17,7 +20,7 @@ class StarWarsApp extends StatelessWidget {
         brightness: Brightness.dark,
 
       ),
-      home: PageManagerPage(),
+      home: ChangeNotifierProvider(create: (BuildContext context) => FavoriteList(),child: const PageManagerPage() ,),
     );
   }
 }

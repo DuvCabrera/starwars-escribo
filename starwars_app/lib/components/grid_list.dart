@@ -4,7 +4,8 @@ import 'package:starwars_app/models/character.dart';
 import 'package:starwars_app/models/films.dart';
 
 class GridListWidget extends StatefulWidget {
-  const GridListWidget({Key? key, required this.json, required this.isFilm}) : super(key: key);
+  const GridListWidget({Key? key, required this.json, required this.isFilm})
+      : super(key: key);
   final String json;
   final bool isFilm;
 
@@ -13,13 +14,12 @@ class GridListWidget extends StatefulWidget {
 }
 
 class _GridListWidgetState extends State<GridListWidget> {
-
   late List<dynamic> list = [];
 
   @override
   void initState() {
-    List<dynamic> temporaryList =[];
-    if(widget.isFilm){
+    List<dynamic> temporaryList = [];
+    if (widget.isFilm) {
       temporaryList = filmsFromJson(widget.json).films;
     } else {
       temporaryList = listCharacterFromJson(widget.json).characters;
@@ -29,16 +29,23 @@ class _GridListWidgetState extends State<GridListWidget> {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemCount: list.length, itemBuilder: (context, index){
-      if(widget.isFilm){
-        final Film film = list[index];
-        return CardWidget(name: film.title,);
-      } else {
-        final Character character = list[index];
-        return CardWidget(name: character.name);
-      }
-    });
+    return ListView.builder(
+        itemCount: list.length,
+        itemBuilder: (context, index) {
+          if (widget.isFilm) {
+            final Film film = list[index];
+            return CardWidget(
+              film: film,
+            );
+          } else {
+            final Character character = list[index];
+            return CardWidget(
+              character: character,
+            );
+          }
+        });
   }
 }

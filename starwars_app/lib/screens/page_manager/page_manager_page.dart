@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
-import 'package:starwars_app/screens/avatar_change/avatar_change_page.dart';
 import 'package:starwars_app/screens/character_listing/character_listing_page.dart';
+import 'package:starwars_app/screens/favorites_list/favorites_list_page.dart';
 import 'package:starwars_app/screens/films_listing/films_listing_page.dart';
 import 'package:starwars_app/screens/official_site/official_site_page.dart';
 
@@ -19,7 +19,7 @@ class _PageManagerPageState extends State<PageManagerPage> {
     final List<Widget> pages = [
       FilmsListingPage(),
       CharacterListingPage(),
-      AvatarChangePage()
+      FavoriteListPage()
     ];
 
     return DefaultTabController(

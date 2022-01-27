@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:starwars_app/database/dao/star_war_dao.dart';
 import 'package:starwars_app/models/favorite.dart';
+import 'package:starwars_app/models/films.dart';
+
+import '../contants.dart';
+import 'character.dart';
 
 class FavoriteList extends ChangeNotifier{
 
@@ -21,13 +25,23 @@ class FavoriteList extends ChangeNotifier{
   }
 
   deleteFavorite(String json){
-    _favorites.removeWhere((e) => e.json == json);
     List<Favorite> favorite = _favorites.where((element) => element.json == json).toList();
+    _favorites.removeWhere((e) => e.json == json);
     _dao.deleteFavorite(favorite[0].id!);
   }
 
-  saveFavorite(){
+  saveFavoriteCharacter(Character person){
+    final String json = characterToJson(person);
+    final Favorite favorite = Favorite(json, character);
+    _favorites.add(favorite);
+    _dao.saveFavorite(json, character);
+  }
 
+  saveFavoriteFilm(Film movie){
+    final String json = filmToJson(movie);
+    final Favorite favorite = Favorite(json, film);
+    _favorites.add(favorite);
+    _dao.saveFavorite(json, film);
   }
 
 }
