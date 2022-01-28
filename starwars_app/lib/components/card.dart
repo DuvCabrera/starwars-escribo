@@ -1,6 +1,7 @@
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:starwars_app/models/character.dart';
+import 'package:starwars_app/models/favorite_list.dart';
 import 'package:starwars_app/models/films.dart';
 
 class CardWidget extends StatelessWidget {
@@ -11,8 +12,19 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favorites = Provider.of<FavoriteList>(context, listen: true);
     final String name = (film != null) ? film!.title : character!.name;
-    var favorite = false;
+
+    bool favorite;
+    if (film != null) {
+      String json = filmToJson(film!);
+      favorite = favorites.favorites.where((e) => e.json == json).isNotEmpty;
+    } else {
+      String json = characterToJson(character!);
+      favorite = favorites.favorites.where((e) => e.json == json).isNotEmpty;
+    }
+
+    var icon = (favorite) ? Icons.favorite : Icons.favorite_border;
     return Container(
       height: 120,
       padding: const EdgeInsets.only(
@@ -34,10 +46,24 @@ class CardWidget extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: FavoriteButton(
-                isFavorite: favorite,
-                valueChanged: (_isFavorite) {
-                  if (_isFavorite) {}
+              child: IconButton(
+                icon: Icon(icon),
+                onPressed: () {
+                  if (!favorite) {
+                    if (film != null) {
+                      favorites.saveFavoriteFilm(film!);
+                    } else {
+                      favorites.saveFavoriteCharacter(character!);
+                    }
+                  } else {
+                    if (film != null) {
+                      String movie = filmToJson(film!);
+                      favorites.deleteFavorite(movie);
+                    } else {
+                      String person = characterToJson(character!);
+                      favorites.deleteFavorite(person);
+                    }
+                  }
                 },
               ),
             )

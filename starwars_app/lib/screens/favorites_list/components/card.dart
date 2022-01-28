@@ -29,8 +29,7 @@ class CardWidget extends StatelessWidget {
         ),
         child: Card(
           elevation: 5,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 30.0),
+          child: Center(
             child: Text(
               name,
               style: const TextStyle(fontSize: 25),

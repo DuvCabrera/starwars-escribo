@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 import 'package:starwars_app/screens/avatar_change/avatar_change_page.dart';
 
-class AppBarWithAvatarSelectedWidget extends StatelessWidget {
-  const AppBarWithAvatarSelectedWidget({Key? key, required this.size})
+class AppBarWithButtonSelectedWidget extends StatelessWidget {
+  const AppBarWithButtonSelectedWidget({Key? key, required this.size})
       : super(key: key);
 
   final Size size;

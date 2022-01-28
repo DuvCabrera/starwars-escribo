@@ -24,10 +24,13 @@ class FavoriteList extends ChangeNotifier{
     notifyListeners();
   }
 
+
   deleteFavorite(String json){
     List<Favorite> favorite = _favorites.where((element) => element.json == json).toList();
-    _favorites.removeWhere((e) => e.json == json);
+    print(favorite.length);
     _dao.deleteFavorite(favorite[0].id!);
+    _favorites.removeWhere((e) => e.json == json);
+    notifyListeners();
   }
 
   saveFavoriteCharacter(Character person){
@@ -35,6 +38,7 @@ class FavoriteList extends ChangeNotifier{
     final Favorite favorite = Favorite(json, character);
     _favorites.add(favorite);
     _dao.saveFavorite(json, character);
+    startList();
   }
 
   saveFavoriteFilm(Film movie){
@@ -42,6 +46,7 @@ class FavoriteList extends ChangeNotifier{
     final Favorite favorite = Favorite(json, film);
     _favorites.add(favorite);
     _dao.saveFavorite(json, film);
+    startList();
   }
 
 }

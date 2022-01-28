@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
+import 'package:starwars_app/screens/avatar_change/avatar_change_page.dart';
 import 'package:starwars_app/screens/character_listing/character_listing_page.dart';
 import 'package:starwars_app/screens/favorites_list/favorites_list_page.dart';
 import 'package:starwars_app/screens/films_listing/films_listing_page.dart';
@@ -17,9 +18,9 @@ class _PageManagerPageState extends State<PageManagerPage> {
   Widget build(BuildContext context) {
     int currentIndex = 0;
     final List<Widget> pages = [
-      FilmsListingPage(),
-      CharacterListingPage(),
-      FavoriteListPage()
+      const FilmsListingPage(),
+      const CharacterListingPage(),
+      const FavoriteListPage()
     ];
 
     return DefaultTabController(
@@ -27,19 +28,19 @@ class _PageManagerPageState extends State<PageManagerPage> {
       length: 3,
       child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(150),
+            preferredSize: const Size.fromHeight(150),
             child: AppBar(
               title: ElevatedButton(style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => OfficialSitePage()));
+                            builder: (context) => const OfficialSitePage()));
                   },
                   child: const Text('Site Oficial',style: TextStyle(color: Colors.amber),)),
               actions: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const AvatarChangePage()));},
                   child: FluttermojiCircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.black,

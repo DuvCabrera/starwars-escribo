@@ -13,6 +13,7 @@ class FavoriteListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FavoriteList list = Provider.of<FavoriteList>(context);
+    list.startList();
     return ListView.builder(
       itemCount: list.favorites.length,
       itemBuilder: (context, index) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:starwars_app/screens/official_site/components/web_page.dart';
-import 'app_bar_with_button_selected.dart';
+import 'package:starwars_app/screens/avatar_change/components/app_bar_with_avatar_selected.dart';
+
+import 'avatar_change_widget.dart';
 
 class BodyWidget extends StatelessWidget {
   const BodyWidget({Key? key}) : super(key: key);
@@ -12,8 +13,8 @@ class BodyWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppBarWithButtonSelectedWidget(size: size),
-          WebPageWidget(size: size)
+          AppBarWithAvatarSelected(size: size),
+          AvatarChangeWidget(size: size)
         ],
       ),
     );
