@@ -31,6 +31,7 @@ class _FilmsListingPageState extends State<FilmsListingPage> {
               case ConnectionState.done:
                 if(snapshot.hasData){
                   ListFilms listFilms = snapshot.data as ListFilms;
+
                   return GridListWidget(
                       json: _toJson(listFilms), isFilm: true);
                 } else{

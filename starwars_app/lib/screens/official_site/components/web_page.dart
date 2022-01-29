@@ -40,7 +40,7 @@ class _WebPageWidgetState extends State<WebPageWidget> {
                     backgroundColor: Colors.amber,
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ]),
       ),
     );

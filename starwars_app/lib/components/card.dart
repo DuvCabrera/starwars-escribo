@@ -12,7 +12,7 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favorites = Provider.of<FavoriteListProvider>(context, listen: true);
+    final favorites = Provider.of<FavoriteListProvider>(context,);
     final String name = (film != null) ? film!.title : character!.name;
     Size size = MediaQuery.of(context).size;
     bool favorite;
@@ -40,7 +40,7 @@ class CardWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 30.0),
-              child: Container(width: size.width * 0.65,
+              child: SizedBox(width: size.width * 0.65,
                 child: Text(
                   name,
                   overflow: TextOverflow.ellipsis,

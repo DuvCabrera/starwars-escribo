@@ -19,7 +19,7 @@ class _CharacterListingPageState extends State<CharacterListingPage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: characterWebClient.getCharacters(),
+        future: characterWebClient.getMoreCharacters(),
         initialData: const [],
         builder: (BuildContext context, snapshot) {
           switch (snapshot.connectionState) {
