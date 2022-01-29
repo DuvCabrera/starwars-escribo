@@ -32,7 +32,7 @@ class _FilmsListingPageState extends State<FilmsListingPage> {
                 return GridListWidget(
                     json: _toJson(listFilms), isFilm: true);
             }
-            return Text('In construction');
+            return const Text('In construction');
           });
     }
 

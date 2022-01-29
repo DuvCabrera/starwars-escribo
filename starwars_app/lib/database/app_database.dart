@@ -8,12 +8,7 @@ createDataBase() async{
   final String path = join(await getDatabasesPath(), 'starwars.db');
   return openDatabase(path, onCreate: (db, version){
     db.execute(StarWarsDao.tableSql);
-  }, version: 1);
+    db.execute(AvatarDao.tableSql);
+  }, version: 1,onDowngrade: onDatabaseDowngradeDelete );
 }
 
-createAvatarDataBase() async{
-  final String path = join(await getDatabasesPath(), 'avatar.db');
-  return openDatabase(path, onCreate: (db, version){
-    db.execute(AvatarDao.tableSql);
-  });
-}

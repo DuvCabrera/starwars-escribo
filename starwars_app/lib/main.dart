@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:starwars_app/screens/avatar_change/avatar_change_page.dart';
+import 'package:starwars_app/screens/favorites_list/favorites_list_page.dart';
+import 'package:starwars_app/screens/films_listing/films_listing_page.dart';
+import 'package:starwars_app/screens/official_site/official_site_page.dart';
 import 'package:starwars_app/screens/page_manager/page_manager_page.dart';
 
-import 'models/favorite_list.dart';
+import 'models/providers/favorite_list.dart';
 
 void main() {
   runApp(const StarWarsApp());
@@ -11,7 +15,6 @@ void main() {
 class StarWarsApp extends StatelessWidget {
   const StarWarsApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,8 +22,14 @@ class StarWarsApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
 
-      ),
-      home: ChangeNotifierProvider(create: (BuildContext context) => FavoriteList(),child: const PageManagerPage() ,),
+      ),routes: <String, WidgetBuilder> {
+        '/home': (BuildContext context) => const PageManagerPage(),
+        '/official-site': (BuildContext context) => const OfficialSitePage(),
+        '/films-listing': (BuildContext context) => const FilmsListingPage(),
+        '/favorite-list': (BuildContext context) => const FavoriteListPage(),
+        '/avatar-change': (BuildContext context) => const AvatarChangePage(),
+    },
+      home: ChangeNotifierProvider(create: (BuildContext context) => FavoriteListProvider(),child: const PageManagerPage() ,),
     );
   }
 }

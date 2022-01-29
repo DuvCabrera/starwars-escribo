@@ -40,21 +40,3 @@ class StarWarsDao {
   }
 
 }
-
-// Future<int> saveCharacter(Character person) async {
-//     final Database db = await createDataBase();
-//     final String json = characterToJson(person);
-//     final Favorite favorite = Favorite(json, character);
-//     return db.insert(_tableName, favorite.toMap());
-//   }
-//
-//   Future<int> saveFilm(Film movie) async {
-//     final Database db = await createDataBase();
-//     final String json = filmToJson(movie);
-//     final Favorite favorite = Favorite(json, film);
-//     return db.insert(_tableName, favorite.toMap());
-//   }
-
-//import 'package:starwars_app/contants.dart';
-// import 'package:starwars_app/models/films.dart';
-// import 'package:starwars_app/models/character.dart';

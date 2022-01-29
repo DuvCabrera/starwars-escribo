@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:starwars_app/models/character.dart';
-import 'package:starwars_app/models/favorite_list.dart';
+import 'package:starwars_app/models/providers/favorite_list.dart';
 import 'package:starwars_app/models/films.dart';
 
 class CardWidget extends StatelessWidget {
-  CardWidget({Key? key, this.film, this.character}) : super(key: key);
+  const CardWidget({Key? key, this.film, this.character}) : super(key: key);
 
   final Film? film;
   final Character? character;
 
   @override
   Widget build(BuildContext context) {
-    final favorites = Provider.of<FavoriteList>(context, listen: true);
+    final favorites = Provider.of<FavoriteListProvider>(context, listen: true);
     final String name = (film != null) ? film!.title : character!.name;
 
     bool favorite;
@@ -45,9 +45,9 @@ class CardWidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsets.only(right: 20.0, bottom: 20),
               child: IconButton(
-                icon: Icon(icon),
+                icon: Icon(icon,size:50,),
                 onPressed: () {
                   if (!favorite) {
                     if (film != null) {

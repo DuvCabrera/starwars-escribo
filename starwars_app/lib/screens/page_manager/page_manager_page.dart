@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'package:starwars_app/screens/avatar_change/avatar_change_page.dart';
@@ -30,34 +33,47 @@ class _PageManagerPageState extends State<PageManagerPage> {
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(150),
             child: AppBar(
-              title: ElevatedButton(style: ElevatedButton.styleFrom(primary: Colors.black),
+              title: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const OfficialSitePage()));
                   },
-                  child: const Text('Site Oficial',style: TextStyle(color: Colors.amber),)),
+                  child: const Text(
+                    'Site Oficial',
+                    style: TextStyle(color: Colors.amber),
+                  )),
               actions: [
                 GestureDetector(
-                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const AvatarChangePage()));},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AvatarChangePage()));
+                  },
                   child: FluttermojiCircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.black,
                   ),
                 )
               ],
-              bottom: const TabBar(tabs: [
-                Tab(
-                  icon: Icon(Icons.home),
-                ),
-                Tab(
-                  icon: Icon(Icons.home),
-                ),
-                Tab(
-                  icon: Icon(Icons.home),
-                )
-              ]),
+              bottom: TabBar(
+                  indicator: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white54),
+                  tabs: const [
+                    Tab(text: 'Filmes',
+
+                    ),
+                    Tab(text: 'Personagens',
+
+                      ),
+                    Tab(text: 'Favoritos',
+
+                    )
+                  ]),
             ),
           ),
           body: TabBarView(

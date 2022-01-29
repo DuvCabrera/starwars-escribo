@@ -3,10 +3,10 @@ import 'package:starwars_app/database/dao/star_war_dao.dart';
 import 'package:starwars_app/models/favorite.dart';
 import 'package:starwars_app/models/films.dart';
 
-import '../contants.dart';
-import 'character.dart';
+import '../../contants.dart';
+import '../character.dart';
 
-class FavoriteList extends ChangeNotifier{
+class FavoriteListProvider extends ChangeNotifier{
 
   List<Favorite> _favorites = [];
 
@@ -27,7 +27,6 @@ class FavoriteList extends ChangeNotifier{
 
   deleteFavorite(String json){
     List<Favorite> favorite = _favorites.where((element) => element.json == json).toList();
-    print(favorite.length);
     _dao.deleteFavorite(favorite[0].id!);
     _favorites.removeWhere((e) => e.json == json);
     notifyListeners();
@@ -48,5 +47,6 @@ class FavoriteList extends ChangeNotifier{
     _dao.saveFavorite(json, film);
     startList();
   }
+
 
 }

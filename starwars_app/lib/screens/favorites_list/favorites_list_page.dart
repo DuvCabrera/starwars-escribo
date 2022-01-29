@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:starwars_app/models/character.dart';
-import 'package:starwars_app/models/favorite_list.dart';
+import 'package:starwars_app/models/providers/favorite_list.dart';
 import 'package:starwars_app/models/films.dart';
 import 'package:starwars_app/screens/favorites_list/components/card.dart';
 
@@ -12,7 +12,7 @@ class FavoriteListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteList list = Provider.of<FavoriteList>(context);
+    FavoriteListProvider list = Provider.of<FavoriteListProvider>(context);
     list.startList();
     return ListView.builder(
       itemCount: list.favorites.length,
