@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starwars_app/components/centered_message.dart';
 import 'package:starwars_app/components/grid_list.dart';
 import 'package:starwars_app/components/progress.dart';
 import 'package:starwars_app/http/web_clients/film_web_client.dart';
@@ -28,11 +29,15 @@ class _FilmsListingPageState extends State<FilmsListingPage> {
               case ConnectionState.active:
                 break;
               case ConnectionState.done:
-                ListFilms listFilms = snapshot.data as ListFilms;
-                return GridListWidget(
-                    json: _toJson(listFilms), isFilm: true);
+                if(snapshot.hasData){
+                  ListFilms listFilms = snapshot.data as ListFilms;
+                  return GridListWidget(
+                      json: _toJson(listFilms), isFilm: true);
+                } else{
+                  return const CenteredMessage('Dados não foram encontrados', icon: Icons.warning_amber_outlined,);
+                }
             }
-            return const Text('In construction');
+            return const CenteredMessage('Erro Desconhecido', icon: Icons.warning_amber_outlined);
           });
     }
 

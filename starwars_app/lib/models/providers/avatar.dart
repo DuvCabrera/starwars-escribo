@@ -14,11 +14,16 @@ class AvatarProvider extends ChangeNotifier{
 
   startAvatar()async {
     String avatarJson = await functions.encodeMySVGtoString();
-    int length = await dao.findAll();
-    if (length == 0) {
+    if (await isEmpty()) {
       await dao.saveAvatar(avatarJson);
     } else {
       await dao.updateAvatar(avatarJson);
     }
   }
+
+  isEmpty() async {
+    int length = await dao.findAll();
+    return length == 0 ? true : false;
+  }
 }
+

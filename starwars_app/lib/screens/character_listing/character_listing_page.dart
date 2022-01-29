@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starwars_app/components/centered_message.dart';
 import 'package:starwars_app/components/grid_list.dart';
 import 'package:starwars_app/components/progress.dart';
 import 'package:starwars_app/models/character.dart';
@@ -29,11 +30,15 @@ class _CharacterListingPageState extends State<CharacterListingPage> {
             case ConnectionState.active:
               break;
             case ConnectionState.done:
-              ListCharacter listCharacter = snapshot.data as ListCharacter;
-              return GridListWidget(
-                  json: _toJson(listCharacter), isFilm: false);
+              if(snapshot.hasData){
+                ListCharacter listCharacter = snapshot.data as ListCharacter;
+                return GridListWidget(
+                    json: _toJson(listCharacter), isFilm: false);
+              } else {
+                return const CenteredMessage('Dados não foram encontrados',icon: Icons.warning_amber_outlined);
+              }
           }
-          return const Text('In construction');
+          return const CenteredMessage('Erro desconhecido',icon: Icons.warning_amber_outlined);
         });
   }
 

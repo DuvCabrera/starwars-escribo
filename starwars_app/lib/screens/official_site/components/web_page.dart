@@ -10,6 +10,7 @@ class WebPageWidget extends StatefulWidget {
 }
 
 class _WebPageWidgetState extends State<WebPageWidget> {
+  double _progress = 0;
   late InAppWebViewController inAppWebViewController;
 
   @override
@@ -17,13 +18,30 @@ class _WebPageWidgetState extends State<WebPageWidget> {
     return SingleChildScrollView(
       child: SizedBox(
         height: widget.size.height - 150,
-        child: InAppWebView(
-          initialUrlRequest:
-              URLRequest(url: Uri.parse('https://www.starwars.com/community')),
-          onWebViewCreated: (InAppWebViewController controller) {
-            inAppWebViewController = controller;
-          },
-        ),
+        child: Stack(children: [
+          InAppWebView(
+            initialUrlRequest: URLRequest(
+                url: Uri.parse('https://www.starwars.com/community')),
+            onWebViewCreated: (InAppWebViewController controller) {
+              inAppWebViewController = controller;
+            },
+            onProgressChanged:
+                (InAppWebViewController controller, int progress) {
+              setState(() {
+                _progress = progress / 100;
+              });
+            },
+          ),
+          _progress < 1
+              ? SizedBox(
+                  height: 3,
+                  child: LinearProgressIndicator(
+                    value: _progress,
+                    backgroundColor: Colors.amber,
+                  ),
+                )
+              : SizedBox(),
+        ]),
       ),
     );
   }

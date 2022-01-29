@@ -14,7 +14,7 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final favorites = Provider.of<FavoriteListProvider>(context, listen: true);
     final String name = (film != null) ? film!.title : character!.name;
-
+    Size size = MediaQuery.of(context).size;
     bool favorite;
     if (film != null) {
       String json = filmToJson(film!);
@@ -27,6 +27,7 @@ class CardWidget extends StatelessWidget {
     var icon = (favorite) ? Icons.favorite : Icons.favorite_border;
     return Container(
       height: 120,
+      width: size.width,
       padding: const EdgeInsets.only(
         left: 16,
         right: 16,
@@ -39,9 +40,13 @@ class CardWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 30.0),
-              child: Text(
-                name,
-                style: const TextStyle(fontSize: 25),
+              child: Container(width: size.width * 0.65,
+                child: Text(
+                  name,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: const TextStyle(fontSize: 25, ),
+                ),
               ),
             ),
             Padding(
