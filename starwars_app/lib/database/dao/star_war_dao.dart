@@ -23,10 +23,10 @@ class StarWarsDao {
   Future<List<Favorite>> findAll() async {
     final Database db = await createDataBase();
     final List<Map<String, dynamic>> result = await db.query(_tableName);
-    return to_list(result);
+    return toList(result);
   }
 
-  List<Favorite> to_list(List<Map<String, dynamic>> result) {
+  List<Favorite> toList(List<Map<String, dynamic>> result) {
     final List<Favorite> favorites = [];
     for (Map<String, dynamic> map in result){
       favorites.add(Favorite(map[_json], map[_type], id: map[_id]));

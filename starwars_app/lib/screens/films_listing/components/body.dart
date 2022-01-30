@@ -8,7 +8,7 @@ class BodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: size.height -180,
         child: const FilmsListingWidget(),
       ),
