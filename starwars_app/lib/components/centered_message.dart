@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CenteredMessage extends StatelessWidget {
+class CenteredMessageWidget extends StatelessWidget {
   final String message;
   final IconData? icon;
   final double iconSize;
   final double fontSize;
 
-  const CenteredMessage(
+  const CenteredMessageWidget(
     this.message, {Key? key,
     this.icon,
     this.iconSize = 64,
