@@ -6,7 +6,8 @@ import 'package:starwars_app/models/films.dart';
 import '../web_client.dart';
 
 class FilmWebClient {
-  Future<ListFilms> getFilms() async {
+
+  Future get() async {
     final Response response = await client
         .get(Uri.parse(baseUrl + allFilms))
         .timeout(const Duration(seconds: 5));

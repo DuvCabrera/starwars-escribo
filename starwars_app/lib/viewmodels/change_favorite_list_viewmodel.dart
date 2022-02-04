@@ -17,7 +17,7 @@ class ChangeFavoriteListViewModel {
     config.favorites = list;
   }
 
-  Future init() async {
+    Future init() async {
     List<Favorite> newList =  await storage.getAll();
     changeList(newList);
   }

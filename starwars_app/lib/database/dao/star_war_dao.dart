@@ -37,7 +37,7 @@ class StarWarsDao implements ILocalStorage{
 
   @override
   Future update(String key, id) {
-    // TODO: implement update
+
     throw UnimplementedError();
   }
 

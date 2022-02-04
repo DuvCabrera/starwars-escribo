@@ -3,18 +3,22 @@ import 'package:starwars_app/models/character.dart';
 
 import '../web_client.dart';
 
-class CharacterWebClient{
-  Future<ListCharacter>   getCharacters({String pageNumber = '1'}) async {
+class CharacterWebClient {
+
+
+  Future request(pageNumber) async {
     final Response response = await client.get(Uri.parse(baseUrl + allPeople + page + pageNumber));
     ListCharacter characters = listCharacterFromJson(response.body);
     return characters;
   }
 
-  Future<ListCharacter> getMoreCharacters({int numberOfPages = 10}) async{
+
+  Future get() async {
+    int numberOfPages = 10;
     int count = 1;
     List<Character> addCharacter = [];
     while(count < numberOfPages){
-      ListCharacter characters = await getCharacters(pageNumber: count.toString());
+      ListCharacter characters = await request(count.toString());
       for (Character char in characters.characters){
         addCharacter.add(char);
       }
