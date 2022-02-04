@@ -15,15 +15,15 @@ class FavoriteListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     FavoriteListProvider list = Provider.of<FavoriteListProvider>(context);
     return ListView.builder(
-      itemCount: list.favorites.length,
+      itemCount: list.favoriteList.length,
       itemBuilder: (context, index) {
-        if (list.favorites[index].type == character) {
-          Character person = characterFromJson(list.favorites[index].json);
+        if (list.favoriteList[index].type == character) {
+          Character person = characterFromJson(list.favoriteList[index].json);
           return CardWidget(
             character: person,
           );
         } else {
-          Film movie = filmFromJson(list.favorites[index].json);
+          Film movie = filmFromJson(list.favoriteList[index].json);
           return CardWidget(
             film: movie,
           );

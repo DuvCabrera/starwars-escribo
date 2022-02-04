@@ -4,27 +4,26 @@ Character characterFromJson(String str) => Character.fromJson(json.decode(str));
 
 String characterToJson(Character data) => json.encode(data.toJson());
 
-ListCharacter listCharacterFromJson(String str) => ListCharacter.fromJson((str));
+ListCharacter listCharacterFromJson(String str) =>
+    ListCharacter.fromJson((str));
 
-String listCharacterToJson( ListCharacter data) => json.encode(data.toJson());
+String listCharacterToJson(ListCharacter data) => json.encode(data.toJson());
 
-class ListCharacter{
+class ListCharacter {
   final List<Character> characters;
 
   ListCharacter(this.characters);
 
-  factory ListCharacter.fromJson(String str) => ListCharacter.fromMap(json.decode(str));
+  factory ListCharacter.fromJson(String str) =>
+      ListCharacter.fromMap(json.decode(str));
 
   ListCharacter.fromMap(Map<String, dynamic> json)
-      : characters = List<Character>.from(json['results'].map((x) => Character.fromJson(x)));
+      : characters = List<Character>.from(
+            json['results'].map((x) => Character.fromJson(x)));
 
-  Map<String, dynamic> toJson() => {
-    'results' : List<dynamic>.from(characters.map((x) => x.toJson()))
-  };
-
+  Map<String, dynamic> toJson() =>
+      {'results': List<dynamic>.from(characters.map((x) => x.toJson()))};
 }
-
-
 
 class Character {
   Character({
@@ -64,40 +63,40 @@ class Character {
   String url;
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
-    name: json["name"],
-    height: json["height"],
-    mass: json["mass"],
-    hairColor: json["hair_color"],
-    skinColor: json["skin_color"],
-    eyeColor: json["eye_color"],
-    birthYear: json["birth_year"],
-    gender: json["gender"],
-    homeworld: json["homeworld"],
-    films: List<String>.from(json["films"].map((x) => x)),
-    species: List<dynamic>.from(json["species"].map((x) => x)),
-    vehicles: List<String>.from(json["vehicles"].map((x) => x)),
-    starships: List<String>.from(json["starships"].map((x) => x)),
-    created: DateTime.parse(json["created"]),
-    edited: DateTime.parse(json["edited"]),
-    url: json["url"],
-  );
+        name: json["name"],
+        height: json["height"],
+        mass: json["mass"],
+        hairColor: json["hair_color"],
+        skinColor: json["skin_color"],
+        eyeColor: json["eye_color"],
+        birthYear: json["birth_year"],
+        gender: json["gender"],
+        homeworld: json["homeworld"],
+        films: List<String>.from(json["films"].map((x) => x)),
+        species: List<dynamic>.from(json["species"].map((x) => x)),
+        vehicles: List<String>.from(json["vehicles"].map((x) => x)),
+        starships: List<String>.from(json["starships"].map((x) => x)),
+        created: DateTime.parse(json["created"]),
+        edited: DateTime.parse(json["edited"]),
+        url: json["url"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "height": height,
-    "mass": mass,
-    "hair_color": hairColor,
-    "skin_color": skinColor,
-    "eye_color": eyeColor,
-    "birth_year": birthYear,
-    "gender": gender,
-    "homeworld": homeworld,
-    "films": List<dynamic>.from(films.map((x) => x)),
-    "species": List<dynamic>.from(species.map((x) => x)),
-    "vehicles": List<dynamic>.from(vehicles.map((x) => x)),
-    "starships": List<dynamic>.from(starships.map((x) => x)),
-    "created": created.toIso8601String(),
-    "edited": edited.toIso8601String(),
-    "url": url,
-  };
+        "name": name,
+        "height": height,
+        "mass": mass,
+        "hair_color": hairColor,
+        "skin_color": skinColor,
+        "eye_color": eyeColor,
+        "birth_year": birthYear,
+        "gender": gender,
+        "homeworld": homeworld,
+        "films": List<dynamic>.from(films.map((x) => x)),
+        "species": List<dynamic>.from(species.map((x) => x)),
+        "vehicles": List<dynamic>.from(vehicles.map((x) => x)),
+        "starships": List<dynamic>.from(starships.map((x) => x)),
+        "created": created.toIso8601String(),
+        "edited": edited.toIso8601String(),
+        "url": url,
+      };
 }

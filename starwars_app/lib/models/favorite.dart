@@ -5,11 +5,11 @@ class Favorite {
 
   Favorite(this.json, this.type, {this.id});
 
-  Map<String, dynamic> toMap (){
+  Map<String, dynamic> toMap() {
     return {
-      'id' : id,
-      'json' : json,
-      'type' : type,
+      'id': id,
+      'json': json,
+      'type': type,
     };
   }
 }

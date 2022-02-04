@@ -1,28 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fluttermoji/fluttermojiFunctions.dart';
 import 'package:starwars_app/database/dao/avatar_dao.dart';
+import 'package:starwars_app/interfaces/local_storage_interface.dart';
 
 class AvatarProvider extends ChangeNotifier{
 
-  final AvatarDao _dao = AvatarDao();
+  final ILocalStorage dao = AvatarDao();
 
   final FluttermojiFunctions _functions = FluttermojiFunctions();
 
   FluttermojiFunctions get functions => _functions;
 
-  AvatarDao get dao => _dao;
 
   startAvatar()async {
     String avatarJson = await functions.encodeMySVGtoString();
     if (await isEmpty()) {
-      await dao.saveAvatar(avatarJson);
+      await dao.put(avatarJson, "");
     } else {
-      await dao.updateAvatar(avatarJson);
+      await dao.update(avatarJson, 0);
     }
   }
 
   isEmpty() async {
-    int length = await dao.findAll();
+    int length = await dao.getAll();
     return length == 0 ? true : false;
   }
 }

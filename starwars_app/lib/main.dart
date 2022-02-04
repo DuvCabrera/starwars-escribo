@@ -30,7 +30,7 @@ class StarWarsApp extends StatelessWidget {
         '/favorite-list': (BuildContext context) => const FavoriteListPage(),
         '/avatar-change': (BuildContext context) => const AvatarChangePage(),
     },
-      home: ChangeNotifierProvider(create: (BuildContext context) => FavoriteListProvider(),child: const PageManagerPage() ,),
+      home: ChangeNotifierProvider(create: (BuildContext context) => FavoriteListProvider(),child: const PageManagerPage(),),
     );
   }
 }

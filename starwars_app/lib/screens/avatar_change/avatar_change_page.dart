@@ -10,7 +10,10 @@ class AvatarChangePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:ChangeNotifierProvider(create: (BuildContext context) => AvatarProvider(),child:const BodyWidget() ,),
+      body: ChangeNotifierProvider(
+        create: (BuildContext context) => AvatarProvider(),
+        child: const BodyWidget(),
+      ),
     );
   }
 }

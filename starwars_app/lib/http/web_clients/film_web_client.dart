@@ -5,9 +5,11 @@ import 'package:starwars_app/models/films.dart';
 
 import '../web_client.dart';
 
-class FilmWebClient{
+class FilmWebClient {
   Future<ListFilms> getFilms() async {
-    final Response response = await client.get(Uri.parse(baseUrl + allFilms)).timeout(const Duration(seconds: 5));
+    final Response response = await client
+        .get(Uri.parse(baseUrl + allFilms))
+        .timeout(const Duration(seconds: 5));
     ListFilms films = filmsFromJson(response.body);
     return films;
   }

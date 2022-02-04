@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
@@ -21,14 +20,14 @@ class PageManagerPage extends StatefulWidget {
 class _PageManagerPageState extends State<PageManagerPage> {
   @override
   Widget build(BuildContext context) {
-    Provider.of<FavoriteListProvider>(context).startList();
+  var prov = Provider.of<FavoriteListProvider>(context);
+  prov.changeFavoriteListViewModel.init();
     int currentIndex = 0;
     final List<Widget> pages = [
       const FilmsListingPage(),
       const CharacterListingPage(),
       const FavoriteListPage()
     ];
-
     return DefaultTabController(
       initialIndex: currentIndex,
       length: 3,
