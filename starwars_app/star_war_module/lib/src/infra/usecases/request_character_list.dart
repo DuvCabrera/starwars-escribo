@@ -6,7 +6,7 @@ import '../repositories/repositories.dart';
 import '../models/models.dart';
 
 class RequestCharacterList extends IRequestCharacterList {
-  final IHttpClient client;
+  final IRemoteHttpClient client;
   final String url;
   final int numberOfPages;
 
@@ -30,7 +30,7 @@ class RequestCharacterList extends IRequestCharacterList {
 
   Future<List<StarWarsCharacterEntity>> request(String pageNumber) async {
     final String finalUrl = url + pageNumber;
-    final map = await client.get(finalUrl);
+    final map = await client.getCharacter(finalUrl);
     List<StarWarsCharacterEntity> characters = map['results']
         .map<StarWarsCharacterEntity>(
             (people) => RemoteCharacterModel.fromJson(people).toEntity())
