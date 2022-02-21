@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:starwars_app/interfaces/local_storage_interface.dart';
 import 'package:starwars_app/models/avatar.dart';
-import '../app_database.dart';
+import 'app_database.dart';
 
 class AvatarDao implements ILocalStorage {
   static const String tableSql = 'CREATE TABLE $_tableName('

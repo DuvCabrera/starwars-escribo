@@ -1,5 +1,5 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:starwars_app/database/app_database.dart';
+import 'app_database.dart';
 import 'package:starwars_app/interfaces/local_storage_interface.dart';
 import 'package:starwars_app/models/favorite.dart';
 
