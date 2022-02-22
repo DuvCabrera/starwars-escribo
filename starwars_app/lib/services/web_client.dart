@@ -11,3 +11,5 @@ const String baseUrl = 'http://swapi.dev/api/';
 const String allPeople = 'people/';
 const String allFilms = 'films/';
 const String page = '?page=';
+
+String url = 'http://swapi.dev/api/people/?page=';
