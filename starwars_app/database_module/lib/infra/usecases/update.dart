@@ -9,8 +9,8 @@ class Update implements IUpdate {
   @override
   Future<void> update(
       {required String tableName,
-      required String json,
+      required Map<String, dynamic> data,
       required int id}) async {
-    await repository.update(tableName: tableName, json: json, id: id);
+    await repository.update(tableName: tableName, data: data, id: id);
   }
 }

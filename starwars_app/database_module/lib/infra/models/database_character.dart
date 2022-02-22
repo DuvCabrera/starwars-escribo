@@ -4,18 +4,18 @@ class DataBaseCharacterModel implements DataBaseCharacterEntity {
   @override
   final int? id;
   @override
-  final String json;
+  final String name;
   @override
   final String type;
 
-  DataBaseCharacterModel({required this.json, required this.type, this.id});
+  DataBaseCharacterModel({required this.name, required this.type, this.id});
 
   factory DataBaseCharacterModel.fromMap(Map<String, dynamic> json) =>
       DataBaseCharacterModel(
-          id: int.tryParse(json['id']), json: json['json'], type: json['type']);
+          id: int.tryParse(json['id']), name: json['name'], type: json['type']);
 
-  Map<String, dynamic> toMap() => {'json': json, 'type': type};
+  Map<String, dynamic> toMap() => {'name': name, 'type': type};
 
   DataBaseCharacterEntity toEntity() =>
-      DataBaseCharacterEntity(json: json, type: type, id: id);
+      DataBaseCharacterEntity(name: name, type: type, id: id);
 }
