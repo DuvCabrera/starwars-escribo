@@ -7,3 +7,4 @@ export 'package:flutter_inappwebview/flutter_inappwebview.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:sqflite/sqflite.dart';
 export 'package:path/path.dart';
+export 'package:http/http.dart';
