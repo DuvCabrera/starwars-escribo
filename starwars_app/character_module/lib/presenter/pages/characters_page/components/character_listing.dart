@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../presenter.dart';
 
 class CharacterListingWidget extends StatefulWidget {
-  const CharacterListingWidget({Key? key}) : super(key: key);
+  const CharacterListingWidget({Key? key, required this.store})
+      : super(key: key);
+  final CharacterStore store;
 
   @override
   State<CharacterListingWidget> createState() => _CharacterListingWidgetState();
@@ -14,16 +16,15 @@ class CharacterListingWidget extends StatefulWidget {
 class _CharacterListingWidgetState extends State<CharacterListingWidget> {
   @override
   Widget build(BuildContext context) {
-    final store = Modular.get<CharacterStore>();
-
     return Observer(builder: (context) {
-      if (store.characterList.isEmpty) {
-        store.fill();
+      if (widget.store.characterList.isEmpty) {
+        widget.store.fill();
         return const ProgressWidget();
       } else {
         return ListViewWidget(
-          isFavorite: store.isFavorite,
-          list: store.characterList,
+          isFavorite: widget.store.isFavorite,
+          list: widget.store.characterList,
+          onFavorite: widget.store.likeIt,
         );
       }
     });

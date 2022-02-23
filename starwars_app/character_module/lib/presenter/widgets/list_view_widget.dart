@@ -26,8 +26,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
           onTap: () {
             if (widget.onFavorite != null) {
               widget.isFavorite == false
-                  ? widget.onFavorite!(false)
-                  : widget.onFavorite!(true);
+                  ? widget.onFavorite!.call(false)
+                  : widget.onFavorite!.call(true);
             }
           },
           child: CardWidget(

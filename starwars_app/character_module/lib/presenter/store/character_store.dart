@@ -37,4 +37,9 @@ abstract class _CharacterStoreBase with Store {
   Future<void> fill() async {
     list = await requestCharacters();
   }
+
+  @action
+  void likeIt(bool value) {
+    favorite = value;
+  }
 }

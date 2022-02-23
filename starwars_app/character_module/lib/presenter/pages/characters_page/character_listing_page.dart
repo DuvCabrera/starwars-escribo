@@ -10,8 +10,8 @@ class CharacterListingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: BodyWidget(),
+    return Scaffold(
+      body: BodyWidget(store: store),
     );
   }
 }
