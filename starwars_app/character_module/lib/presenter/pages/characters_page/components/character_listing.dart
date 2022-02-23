@@ -1,12 +1,8 @@
+import 'package:dependency_module/dependency_module.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:starwars_app/components/grid_list.dart';
-import 'package:starwars_app/components/progress.dart';
 
-import '../../../../external/datasources/datasources.dart';
-import '../../../../external/repositories/repositories.dart';
-import '../../../../infra/usecases/usecases.dart';
-import '../../../store/character_store_classic.dart';
+import '../../../presenter.dart';
 
 class CharacterListingWidget extends StatefulWidget {
   const CharacterListingWidget({Key? key}) : super(key: key);
@@ -18,19 +14,16 @@ class CharacterListingWidget extends StatefulWidget {
 class _CharacterListingWidgetState extends State<CharacterListingWidget> {
   @override
   Widget build(BuildContext context) {
-    final store = CharacterStoreClassic(RequestCharacterList(
-        client: RemoteHttpClient(client: RemoteClient()),
-        numberOfPages: 10,
-        url: 'http://swapi.dev/api/people/?page='));
+    final store = Modular.get<CharacterStore>();
 
     return Observer(builder: (context) {
-      if (store.listCharacter.isEmpty) {
+      if (store.characterList.isEmpty) {
         store.fill();
         return const ProgressWidget();
       } else {
-        return GridListWidget(
-          json: store.listCharacter,
-          isFilm: false,
+        return ListViewWidget(
+          isFavorite: store.isFavorite,
+          list: store.characterList,
         );
       }
     });

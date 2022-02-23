@@ -1,4 +1,4 @@
-name: _design_system
+name: design_system
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -7,14 +7,20 @@ environment:
   sdk: ">=2.16.0-134.5.beta <3.0.0"
   flutter: ">=1.17.0"
 
+publish_to: none
+
 dependencies:
   flutter:
     sdk: flutter
+  dependency_module:
+    path: ../dependency_module
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starwars_app/screens/character_listing/components/character_listing.dart';
+
+import 'character_listing.dart';
 
 class BodyWidget extends StatelessWidget {
   const BodyWidget({Key? key}) : super(key: key);

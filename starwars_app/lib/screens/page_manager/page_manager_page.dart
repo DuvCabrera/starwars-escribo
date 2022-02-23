@@ -1,5 +1,3 @@
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'package:provider/provider.dart';
@@ -20,8 +18,8 @@ class PageManagerPage extends StatefulWidget {
 class _PageManagerPageState extends State<PageManagerPage> {
   @override
   Widget build(BuildContext context) {
-  var prov = Provider.of<FavoriteListProvider>(context);
-  prov.changeFavoriteListViewModel.init();
+    var prov = Provider.of<FavoriteListProvider>(context);
+    prov.changeFavoriteListViewModel.init();
     int currentIndex = 0;
     final List<Widget> pages = [
       const FilmsListingPage(),
@@ -66,14 +64,14 @@ class _PageManagerPageState extends State<PageManagerPage> {
                       border: Border.all(color: Colors.black),
                       color: Colors.white54),
                   tabs: const [
-                    Tab(text: 'Filmes',
-
+                    Tab(
+                      text: 'Filmes',
                     ),
-                    Tab(text: 'Personagens',
-
-                      ),
-                    Tab(text: 'Favoritos',
-
+                    Tab(
+                      text: 'Personagens',
+                    ),
+                    Tab(
+                      text: 'Favoritos',
                     )
                   ]),
             ),

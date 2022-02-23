@@ -14,7 +14,11 @@ dependencies:
     sdk: flutter
   dependency_module:
     path: ../dependency_module
-
+  database_module:
+    path: ../database_module
+  design_system:
+    path: ../design_system
+      
 dev_dependencies:
   flutter_test:
     sdk: flutter
