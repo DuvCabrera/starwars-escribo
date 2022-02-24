@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:http_interceptor/http/interceptor_contract.dart';
+
 import 'package:http_interceptor/http_interceptor.dart';
 
 class LoggingInterceptor implements InterceptorContract {

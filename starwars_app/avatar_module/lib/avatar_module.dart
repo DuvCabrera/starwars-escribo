@@ -1,0 +1,1 @@
+library avatar_module;

@@ -1,4 +1,4 @@
-name: home_module
+name: avatar_module
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -14,21 +14,18 @@ dependencies:
     sdk: flutter
   dependency_module:
     path: ../dependency_module
-  character_module:
-    path: ../character_module
-  film_module:
-    path: ../film_module
-  favorite_module:
-    path: ../favorite_module
   database_module:
     path: ../database_module
-  
-
+  design_system:
+    path: ../design_system
+      
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-
+  build_runner:
+  mobx_codegen:
+  mockito: ^5.0.17
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
