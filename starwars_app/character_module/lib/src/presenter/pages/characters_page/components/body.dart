@@ -1,6 +1,6 @@
-import 'package:character_module/presenter/store/character_store.dart';
 import 'package:flutter/material.dart';
 
+import '../../../presenter.dart';
 import 'character_listing.dart';
 
 class BodyWidget extends StatelessWidget {

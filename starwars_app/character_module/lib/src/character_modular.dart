@@ -1,10 +1,9 @@
-import 'package:character_module/presenter/pages/characters_page/character_listing_page.dart';
 import 'package:dependency_module/dependency_module.dart';
 
 import 'domain/domain.dart';
 import 'external/external.dart';
 import 'infra/infra.dart';
-import 'presenter/store/store.dart';
+import 'presenter/presenter.dart';
 
 class CharacterModular extends Module {
   @override
