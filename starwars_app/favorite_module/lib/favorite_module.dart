@@ -1,0 +1,1 @@
+library favorite_module;
