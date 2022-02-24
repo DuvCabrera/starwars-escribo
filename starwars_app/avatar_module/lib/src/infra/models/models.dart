@@ -1,1 +1,1 @@
-export './remote_character_model.dart';
+export 'remote_avatar.dart';
