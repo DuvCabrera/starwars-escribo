@@ -1,4 +1,5 @@
 import 'package:database_module/database_module.dart';
+import 'package:dependency_module/dependency_module.dart';
 
 import 'package:mobx/mobx.dart';
 
@@ -39,7 +40,28 @@ abstract class _CharacterStoreBase with Store {
   }
 
   @action
-  void likeIt(bool value) {
+  Future<void> deleteDataFromStorage(String name) async {
+    final List<Map<String, dynamic>> dbList =
+        await read.get(tableName: 'starwars');
+    final data = dbList.where((e) => e['name'] == name).toList();
+    delete.delete(tableName: 'starwars', id: data[0]['id']);
+  }
+
+  @action
+  Future<void> saveDataOnStorage(String name) async {
+    final Map<String, dynamic> data = {
+      'id': null,
+      'name': name,
+      'type': 'character'
+    };
+    await create.create(tableName: 'starwars', data: data);
+  }
+
+  @action
+  Future<void> likeIt(bool value, String name) async {
     favorite = value;
+    favorite == true
+        ? await saveDataOnStorage(name)
+        : await deleteDataFromStorage(name);
   }
 }

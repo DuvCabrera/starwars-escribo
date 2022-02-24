@@ -10,7 +10,7 @@ class ListViewWidget extends StatefulWidget {
       : super(key: key);
   final List<StarWarsCharacterEntity> list;
   final bool isFavorite;
-  final Function(bool favorite)? onFavorite;
+  final Function(bool favorite, String name)? onFavorite;
 
   @override
   State<ListViewWidget> createState() => _ListViewWidgetState();
@@ -26,8 +26,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
           onTap: () {
             if (widget.onFavorite != null) {
               widget.isFavorite == false
-                  ? widget.onFavorite!.call(false)
-                  : widget.onFavorite!.call(true);
+                  ? widget.onFavorite!(false, widget.list[index].name)
+                  : widget.onFavorite!(true, widget.list[index].name);
             }
           },
           child: CardWidget(
