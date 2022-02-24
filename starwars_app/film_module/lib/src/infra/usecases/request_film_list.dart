@@ -5,10 +5,8 @@ import '../repositories/repositories.dart';
 class RequestFilmList extends IRequestFilmList {
   final IRemoteHttpClient client;
   final String url;
-  final int numberOfPages;
 
-  RequestFilmList(
-      {required this.client, required this.url, required this.numberOfPages});
+  RequestFilmList({required this.client, required this.url});
 
   @override
   Future<List<StarWarsFilmEntity>> call() async {
