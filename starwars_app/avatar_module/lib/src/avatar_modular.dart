@@ -5,7 +5,7 @@ import 'external/external.dart';
 import 'infra/infra.dart';
 import 'presenter/presenter.dart';
 
-class CharacterModular extends Module {
+class AvatarModular extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/',

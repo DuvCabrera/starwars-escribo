@@ -1,13 +1,12 @@
-name: home_module
+name: star_wars_app
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
+publish_to: none
 
 environment:
   sdk: ">=2.16.0-134.5.beta <3.0.0"
   flutter: ">=1.17.0"
-
-publish_to: none
 
 dependencies:
   flutter:
@@ -24,14 +23,19 @@ dependencies:
     path: ../favorite_module
   film_module:
     path: ../film_module
-  
-  
+  home_module:
+    path: ../home_module
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
 
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
 flutter:
 
   # To add assets to your package, add an assets section, like this:

@@ -51,15 +51,24 @@ class _HomePageState extends State<HomePage> {
                   indicator: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       color: Colors.white54),
-                  tabs: const [
-                    Tab(
-                      text: 'Filmes',
+                  tabs: [
+                    GestureDetector(
+                      onTap: () => Modular.to.navigate('/film/'),
+                      child: const Tab(
+                        text: 'Filmes',
+                      ),
                     ),
-                    Tab(
-                      text: 'Personagens',
+                    GestureDetector(
+                      onTap: () => Modular.to.navigate('/character/'),
+                      child: const Tab(
+                        text: 'Personagens',
+                      ),
                     ),
-                    Tab(
-                      text: 'Favoritos',
+                    GestureDetector(
+                      onTap: () => Modular.to.navigate('/favorite/'),
+                      child: const Tab(
+                        text: 'Favoritos',
+                      ),
                     )
                   ]),
             ),

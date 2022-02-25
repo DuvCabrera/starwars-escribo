@@ -1,3 +1,4 @@
+import 'package:avatar_module/avatar_module.dart';
 import 'package:character_module/character_module.dart';
 import 'package:dependency_module/dependency_module.dart';
 import 'package:favorite_module/favorite_module.dart';
@@ -16,6 +17,7 @@ class HomeModular extends Module {
         ]),
         ChildRoute('/officialsite',
             child: (context, args) => const OfficialSitePage()),
+        ModuleRoute("/avatar-change", module: AvatarModular())
       ];
 
   @override
