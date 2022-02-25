@@ -9,12 +9,13 @@ import 'presenter/pages/pages.dart';
 class HomeModular extends Module {
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => const HomePage()),
+        ChildRoute('/', child: (context, args) => const HomePage(), children: [
+          ModuleRoute('/film/', module: FilmModular()),
+          ModuleRoute('/character/', module: CharacterModular()),
+          ModuleRoute('/favorite/', module: FavoriteModular())
+        ]),
         ChildRoute('/officialsite',
             child: (context, args) => const OfficialSitePage()),
-        ModuleRoute('/film/', module: FilmModular()),
-        ModuleRoute('/character/', module: CharacterModular()),
-        ModuleRoute('/favorite/', module: FavoriteModular())
       ];
 
   @override

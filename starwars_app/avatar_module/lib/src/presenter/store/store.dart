@@ -1,1 +1,1 @@
-export './character_store.dart';
+export 'avatar_store.dart';

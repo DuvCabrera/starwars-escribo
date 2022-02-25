@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
 import '../../../presenter.dart';
-import 'character_listing.dart';
+import 'app_bar_with_avatar_selected.dart';
+import 'avatar_change_widget.dart';
 
 class BodyWidget extends StatelessWidget {
   const BodyWidget({Key? key, required this.store}) : super(key: key);
-
-  final CharacterStore store;
+  final AvatarStore store;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      child: SizedBox(
-        height: size.height - 180,
-        child: CharacterListingWidget(store: store),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppBarWithAvatarSelected(size: size, store: store),
+          AvatarChangeWidget(size: size)
+        ],
       ),
     );
   }

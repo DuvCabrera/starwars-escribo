@@ -64,9 +64,9 @@ class _HomePageState extends State<HomePage> {
                   ]),
             ),
           ),
-          body: TabBarView(
-            children: pages,
-          )),
+          body: const TabBarView(children: [
+            RouterOutlet(),
+          ])),
     );
   }
 }

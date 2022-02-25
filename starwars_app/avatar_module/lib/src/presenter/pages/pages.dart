@@ -1,1 +1,1 @@
-export './characters_page/character_page.dart';
+export './avatar_change_page/avatar_change_page.dart';
