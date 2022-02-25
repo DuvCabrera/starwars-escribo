@@ -1,5 +1,5 @@
+import 'package:database_module/database_module.dart';
 import 'package:dependency_module/dependency_module.dart';
-import 'package:flutter/material.dart';
 
 import 'domain/domain.dart';
 import 'external/external.dart';
@@ -9,10 +9,8 @@ import 'presenter/presenter.dart';
 
 class FilmModular extends Module {
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute('/',
-            child: (context, args) => FilmListingPage(store: Modular.get()))
-      ];
+  List<ModularRoute> get routes =>
+      [ChildRoute('/', child: (context, args) => const FilmListingPage())];
 
   @override
   List<Bind<Object>> get binds => [
@@ -20,10 +18,10 @@ class FilmModular extends Module {
         Bind<IRemoteHttpClient>((i) => RemoteHttpClient(client: i())),
         Bind<IRequestFilmList>((i) =>
             RequestFilmList(client: i(), url: 'http://swapi.dev/api/films/')),
-        Bind((i) => FilmStore(
-            requestFilms: i(),
-            create: Modular.get(),
-            delete: Modular.get(),
-            read: Modular.get())),
+        Bind((i) =>
+            FilmStore(requestFilms: i(), create: i(), delete: i(), read: i())),
       ];
+
+  @override
+  List<Module> get imports => [DataBaseModular()];
 }

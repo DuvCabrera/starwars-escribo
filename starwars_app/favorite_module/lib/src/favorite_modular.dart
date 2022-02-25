@@ -10,7 +10,8 @@ class FavoriteModular extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/',
-            child: (context, args) => FavoriteListingPage(store: Modular.get()))
+            child: (context, args) =>
+                FavoriteListingPage(store: Modular.get<FavoriteStore>()))
       ];
 
   @override
@@ -25,8 +26,8 @@ class FavoriteModular extends Module {
 
         //Domain
         Bind<FavoriteStore>((i) => FavoriteStore(requestFavorite: i())),
-
-        // Import externo
-        Bind<IRead>((i) => Modular.get())
       ];
+
+  @override
+  List<Module> get imports => [DataBaseModular()];
 }

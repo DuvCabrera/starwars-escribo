@@ -1,7 +1,4 @@
-import 'package:database_module/database_module.dart';
 import 'package:dependency_module/dependency_module.dart';
-
-import 'package:mobx/mobx.dart';
 
 import '../../domain/entities/entities.dart';
 import '../../domain/usecases/usecases.dart';

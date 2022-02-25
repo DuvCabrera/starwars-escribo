@@ -9,7 +9,7 @@ class RequestFilmList extends IRequestFilmList {
   RequestFilmList({required this.client, required this.url});
 
   @override
-  Future<List<StarWarsFilmEntity>> call() async {
+  Future<List<StarWarsFilmEntity>> request() async {
     final Map<String, dynamic> results = await client.getFilms(url);
     final List<StarWarsFilmEntity> films = results['results']
         .map<StarWarsFilmEntity>(

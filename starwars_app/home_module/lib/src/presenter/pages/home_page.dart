@@ -1,7 +1,5 @@
-import 'package:character_module/character_module.dart';
 import 'package:dependency_module/dependency_module.dart';
-import 'package:favorite_module/favorite_module.dart';
-import 'package:film_module/film_module.dart';
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,15 +13,33 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     int currentIndex = 0;
-    final List<Widget> pages = [
-      FilmListingPage(store: Modular.get()),
-      CharacterListingPage(store: Modular.get()),
-      FavoriteListingPage(store: Modular.get())
-    ];
+
+    final leadingBar = SizedBox(
+        height: MediaQuery.of(context).size.height * 0.2,
+        child: NavigationListener(builder: (context, child) {
+          return Row(children: [
+            ListTile(
+              title: const Text('Filmes'),
+              onTap: () => Modular.to.navigate('/film/'),
+              selected: Modular.to.path.endsWith('/film/'),
+            ),
+            ListTile(
+              title: const Text('Personagens'),
+              onTap: () => Modular.to.navigate('/character/'),
+              selected: Modular.to.path.endsWith('/character/'),
+            ),
+            ListTile(
+              title: const Text('Favoritos'),
+              onTap: () => Modular.to.navigate('/favorite/'),
+              selected: Modular.to.path.endsWith('/favorite/'),
+            )
+          ]);
+        }));
+
     return DefaultTabController(
-      initialIndex: currentIndex,
-      length: 3,
-      child: Scaffold(
+        initialIndex: currentIndex,
+        length: 3,
+        child: Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(150),
             child: AppBar(
@@ -47,35 +63,35 @@ class _HomePageState extends State<HomePage> {
                   ),
                 )
               ],
-              bottom: TabBar(
-                  indicator: BoxDecoration(
-                      border: Border.all(color: Colors.black),
-                      color: Colors.white54),
-                  tabs: [
-                    GestureDetector(
-                      onTap: () => Modular.to.navigate('/film/'),
-                      child: const Tab(
-                        text: 'Filmes',
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => Modular.to.navigate('/character/'),
-                      child: const Tab(
-                        text: 'Personagens',
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => Modular.to.navigate('/favorite/'),
-                      child: const Tab(
-                        text: 'Favoritos',
-                      ),
-                    )
-                  ]),
+              // bottom: TabBar(
+              //     indicator: BoxDecoration(
+              //         border: Border.all(color: Colors.black),
+              //         color: Colors.white54),
+              //     tabs: [
+              //       GestureDetector(
+              //         onTap: () => Modular.to.navigate('/film/'),
+              //         child: const Tab(
+              //           text: 'Filmes',
+              //         ),
+              //       ),
+              //       GestureDetector(
+              //         onTap: () => Modular.to.navigate('/character/'),
+              //         child: const Tab(
+              //           text: 'Personagens',
+              //         ),
+              //       ),
+              //       GestureDetector(
+              //         onTap: () => Modular.to.navigate('/favorite/'),
+              //         child: const Tab(
+              //           text: 'Favoritos',
+              //         ),
+              //       )
+              //     ]),
             ),
           ),
-          body: const TabBarView(children: [
-            RouterOutlet(),
-          ])),
-    );
+          body: Column(
+            children: [leadingBar, const Expanded(child: RouterOutlet())],
+          ),
+        ));
   }
 }

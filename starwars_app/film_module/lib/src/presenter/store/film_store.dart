@@ -35,7 +35,7 @@ abstract class _FilmStoreBase with Store {
 
   @action
   Future<void> fill() async {
-    list = await requestFilms();
+    list = await requestFilms.request();
   }
 
   @action
