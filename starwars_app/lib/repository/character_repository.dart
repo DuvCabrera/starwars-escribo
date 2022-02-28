@@ -1,4 +1,4 @@
-import 'package:starwars_app/http/web_client.dart';
+import 'package:starwars_app/services/web_client.dart';
 import 'package:starwars_app/interfaces/http_client_interface.dart';
 import 'package:starwars_app/models/character.dart';
 import 'package:starwars_app/repository/character_repository_interface.dart';

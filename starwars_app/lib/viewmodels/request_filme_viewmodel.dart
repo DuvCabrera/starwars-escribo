@@ -6,12 +6,18 @@ import 'package:starwars_app/repository/film_repository_interface.dart';
 import 'package:starwars_app/services/htpp_client_service.dart';
 
 class RequestFilmViewModel extends ChangeNotifier {
-  final IFilmRepository repository = FilmRepository(HttpClientService());
+  IFilmRepository repository = FilmRepository(HttpClientService());
 
   ListFilms? listFilms;
 
   fill() async {
-    listFilms = await repository.getFilms();
-    notifyListeners();
+    try{
+      listFilms = await repository.getFilms();
+      notifyListeners();
+
+    }catch (e){
+      print(e);
+    }
+
   }
 }
