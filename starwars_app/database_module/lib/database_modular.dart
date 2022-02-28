@@ -10,16 +10,17 @@ class DataBaseModular extends Module {
   @override
   List<Bind<Object>> get binds => [
         // External
-        Bind((i) => AppDatabase()),
-        Bind((i) => DataBaseAdapter(i())),
+        Bind((i) => AppDatabase(), export: true),
+        Bind((i) => DataBaseAdapter(i()), export: true),
 
         // Infra
-        Bind<IDataBaseRepository>((i) => DataBaseRepository(database: i())),
+        Bind<IDataBaseRepository>((i) => DataBaseRepository(database: i()),
+            export: true),
 
         // Domain
-        Bind<ICreate>((i) => Create(repository: i())),
-        Bind<IDelete>((i) => Delete(repository: i())),
-        Bind<IRead>((i) => Read(repository: i())),
-        Bind<IUpdate>((i) => Update(repository: i())),
+        Bind<ICreate>((i) => Create(repository: i()), export: true),
+        Bind<IDelete>((i) => Delete(repository: i()), export: true),
+        Bind<IRead>((i) => Read(repository: i()), export: true),
+        Bind<IUpdate>((i) => Update(repository: i()), export: true),
       ];
 }

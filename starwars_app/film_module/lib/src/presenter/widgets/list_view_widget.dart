@@ -1,16 +1,11 @@
+import 'package:film_module/src/presenter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/entities.dart';
-
-import 'card_widget.dart';
-
 class ListViewWidget extends StatefulWidget {
-  const ListViewWidget(
-      {Key? key, required this.list, required this.isFavorite, this.onFavorite})
+  const ListViewWidget({Key? key, required this.list, required this.onFavorite})
       : super(key: key);
-  final List<StarWarsFilmEntity> list;
-  final bool isFavorite;
-  final Function(bool favorite, String name)? onFavorite;
+  final List<Map<String, dynamic>> list;
+  final Function(Map<String, dynamic> name) onFavorite;
 
   @override
   State<ListViewWidget> createState() => _ListViewWidgetState();
@@ -24,15 +19,11 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            if (widget.onFavorite != null) {
-              widget.isFavorite == false
-                  ? widget.onFavorite!(false, widget.list[index].name)
-                  : widget.onFavorite!(true, widget.list[index].name);
-            }
+            widget.onFavorite(widget.list[index]);
           },
           child: CardWidget(
             character: widget.list[index],
-            isFavorite: widget.isFavorite,
+            isFavorite: widget.list[index]['isFavorite'],
           ),
         );
       },

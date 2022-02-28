@@ -8,11 +8,8 @@ import 'infra/infra.dart';
 
 class FavoriteModular extends Module {
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute('/',
-            child: (context, args) =>
-                FavoriteListingPage(store: Modular.get<FavoriteStore>()))
-      ];
+  List<ModularRoute> get routes =>
+      [ChildRoute('/', child: (context, args) => const FavoriteListingPage())];
 
   @override
   List<Bind<Object>> get binds => [

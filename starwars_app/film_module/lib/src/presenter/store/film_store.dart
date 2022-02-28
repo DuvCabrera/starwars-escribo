@@ -21,29 +21,58 @@ abstract class _FilmStoreBase with Store {
       required this.delete,
       required this.read});
 
-  @observable
   List<StarWarsFilmEntity> list = [];
 
   @observable
-  bool favorite = false;
+  List<Map<String, dynamic>> favorite = [];
 
   @computed
-  List<StarWarsFilmEntity> get filmList => list;
+  List<Map<String, dynamic>> get listFavorite => favorite;
 
-  @computed
-  bool get isFavorite => favorite;
+  @observable
+  List<Map<String, dynamic>> dbList = [];
 
   @action
   Future<void> fill() async {
     list = await requestFilms.request();
+    dbList = await read.get(tableName: 'starwars');
+    fillFavotire();
+  }
+
+  @action
+  Future<void> fillFavotire() async {
+    favorite = list
+        .map((e) => {'name': e.name, 'isFavorite': isFavorite(e.name)})
+        .toList();
+  }
+
+  List<Map<String, dynamic>> favoriteRefresh(
+      String name, List<Map<String, dynamic>> list, String type) {
+    List<Map<String, dynamic>> listReturn = [];
+    for (var item in list) {
+      if (item['name'] == name) {
+        if (type == 'delete') {
+          item['isFavorite'] = false;
+        } else {
+          item['isFavorite'] = true;
+        }
+      }
+      listReturn.add(item);
+    }
+    return listReturn;
+  }
+
+  @action
+  bool isFavorite(String name) {
+    return dbList.any((e) => e.containsValue(name));
   }
 
   @action
   Future<void> deleteDataFromStorage(String name) async {
-    final List<Map<String, dynamic>> dbList =
-        await read.get(tableName: 'starwars');
     final data = dbList.where((e) => e['name'] == name).toList();
     delete.delete(tableName: 'starwars', id: data[0]['id']);
+    dbList = await read.get(tableName: 'starwars');
+    favorite = favoriteRefresh(name, favorite, 'delete');
   }
 
   @action
@@ -54,13 +83,14 @@ abstract class _FilmStoreBase with Store {
       'type': 'film'
     };
     await create.create(tableName: 'starwars', data: data);
+    dbList = await read.get(tableName: 'starwars');
+    favorite = favoriteRefresh(name, favorite, 'save');
   }
 
   @action
-  Future<void> likeIt(bool value, String name) async {
-    favorite = value;
-    favorite == true
-        ? await saveDataOnStorage(name)
-        : await deleteDataFromStorage(name);
+  Future<void> likeIt(Map<String, dynamic> favoriteFromClick) async {
+    favoriteFromClick['isFavorite'] == true
+        ? await deleteDataFromStorage(favoriteFromClick['name'])
+        : await saveDataOnStorage(favoriteFromClick['name']);
   }
 }

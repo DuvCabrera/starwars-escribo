@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../store/store.dart';
 import 'components/body.dart';
 
 class FavoriteListingPage extends StatelessWidget {
-  const FavoriteListingPage({Key? key, required this.store}) : super(key: key);
-
-  final FavoriteStore store;
+  const FavoriteListingPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BodyWidget(store: store),
+    return const Scaffold(
+      body: BodyWidget(),
     );
   }
 }

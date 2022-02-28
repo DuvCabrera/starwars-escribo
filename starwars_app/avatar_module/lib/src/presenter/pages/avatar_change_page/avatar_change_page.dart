@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../presenter.dart';
 import 'components/body.dart';
 
 class AvatarChangePage extends StatelessWidget {
-  const AvatarChangePage({Key? key, required this.store}) : super(key: key);
-  final AvatarStore store;
+  const AvatarChangePage({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BodyWidget(store: store),
+    return const Scaffold(
+      body: BodyWidget(),
     );
   }
 }

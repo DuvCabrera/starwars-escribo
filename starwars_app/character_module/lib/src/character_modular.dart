@@ -8,15 +8,11 @@ import 'presenter/presenter.dart';
 
 class CharacterModular extends Module {
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute('/',
-            child: (context, args) =>
-                CharacterListingPage(store: Modular.get()))
-      ];
+  List<ModularRoute> get routes =>
+      [ChildRoute('/', child: (context, args) => const CharacterListingPage())];
 
   @override
   List<Bind<Object>> get binds => [
-        Bind((i) => CharacterListingPage(store: i())),
         Bind<IRemoteClient>((i) => RemoteClient()),
         Bind<IRemoteHttpClient>((i) => RemoteHttpClient(client: i())),
         Bind<IRequestCharacterList>((i) => RequestCharacterList(

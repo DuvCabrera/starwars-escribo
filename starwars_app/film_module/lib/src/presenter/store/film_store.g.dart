@@ -9,48 +9,41 @@ part of 'film_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FilmStore on _FilmStoreBase, Store {
-  Computed<List<StarWarsFilmEntity>>? _$filmListComputed;
+  Computed<List<Map<String, dynamic>>>? _$listFavoriteComputed;
 
   @override
-  List<StarWarsFilmEntity> get filmList => (_$filmListComputed ??=
-          Computed<List<StarWarsFilmEntity>>(() => super.filmList,
-              name: '_FilmStoreBase.filmList'))
+  List<Map<String, dynamic>> get listFavorite => (_$listFavoriteComputed ??=
+          Computed<List<Map<String, dynamic>>>(() => super.listFavorite,
+              name: '_FilmStoreBase.listFavorite'))
       .value;
-  Computed<bool>? _$isFavoriteComputed;
-
-  @override
-  bool get isFavorite =>
-      (_$isFavoriteComputed ??= Computed<bool>(() => super.isFavorite,
-              name: '_FilmStoreBase.isFavorite'))
-          .value;
-
-  final _$listAtom = Atom(name: '_FilmStoreBase.list');
-
-  @override
-  List<StarWarsFilmEntity> get list {
-    _$listAtom.reportRead();
-    return super.list;
-  }
-
-  @override
-  set list(List<StarWarsFilmEntity> value) {
-    _$listAtom.reportWrite(value, super.list, () {
-      super.list = value;
-    });
-  }
 
   final _$favoriteAtom = Atom(name: '_FilmStoreBase.favorite');
 
   @override
-  bool get favorite {
+  List<Map<String, dynamic>> get favorite {
     _$favoriteAtom.reportRead();
     return super.favorite;
   }
 
   @override
-  set favorite(bool value) {
+  set favorite(List<Map<String, dynamic>> value) {
     _$favoriteAtom.reportWrite(value, super.favorite, () {
       super.favorite = value;
+    });
+  }
+
+  final _$dbListAtom = Atom(name: '_FilmStoreBase.dbList');
+
+  @override
+  List<Map<String, dynamic>> get dbList {
+    _$dbListAtom.reportRead();
+    return super.dbList;
+  }
+
+  @override
+  set dbList(List<Map<String, dynamic>> value) {
+    _$dbListAtom.reportWrite(value, super.dbList, () {
+      super.dbList = value;
     });
   }
 
@@ -59,6 +52,13 @@ mixin _$FilmStore on _FilmStoreBase, Store {
   @override
   Future<void> fill() {
     return _$fillAsyncAction.run(() => super.fill());
+  }
+
+  final _$fillFavotireAsyncAction = AsyncAction('_FilmStoreBase.fillFavotire');
+
+  @override
+  Future<void> fillFavotire() {
+    return _$fillFavotireAsyncAction.run(() => super.fillFavotire());
   }
 
   final _$deleteDataFromStorageAsyncAction =
@@ -82,17 +82,30 @@ mixin _$FilmStore on _FilmStoreBase, Store {
   final _$likeItAsyncAction = AsyncAction('_FilmStoreBase.likeIt');
 
   @override
-  Future<void> likeIt(bool value, String name) {
-    return _$likeItAsyncAction.run(() => super.likeIt(value, name));
+  Future<void> likeIt(Map<String, dynamic> favoriteFromClick) {
+    return _$likeItAsyncAction.run(() => super.likeIt(favoriteFromClick));
+  }
+
+  final _$_FilmStoreBaseActionController =
+      ActionController(name: '_FilmStoreBase');
+
+  @override
+  bool isFavorite(String name) {
+    final _$actionInfo = _$_FilmStoreBaseActionController.startAction(
+        name: '_FilmStoreBase.isFavorite');
+    try {
+      return super.isFavorite(name);
+    } finally {
+      _$_FilmStoreBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override
   String toString() {
     return '''
-list: ${list},
 favorite: ${favorite},
-filmList: ${filmList},
-isFavorite: ${isFavorite}
+dbList: ${dbList},
+listFavorite: ${listFavorite}
     ''';
   }
 }

@@ -21,43 +21,8 @@ class DataBaseAdapter {
     required Map<String, dynamic> data,
   }) async {
     final Database db = await _appDatabase.db;
-    if (tableName == 'starwars') {
-      final existingRelation = await db.query(
-        'starwars',
-        where: 'id = ?',
-        whereArgs: [data['id']],
-      );
 
-      if (existingRelation.isEmpty) {
-        await db.insert(tableName, data);
-      }
-    }
-
-    if (tableName == 'avatar') {
-      final existingRelation = await db.query(
-        'avatar',
-        where: 'id = ?',
-        whereArgs: [data['id']],
-      );
-
-      if (existingRelation.isEmpty) {
-        db.insert(tableName, data);
-      }
-    }
-
-    final alreadyExists = data['id'] != null
-        ? await db.query(
-            tableName,
-            where: 'id = ?',
-            whereArgs: [data['id'] as int],
-          )
-        : [];
-
-    if (alreadyExists.isNotEmpty) {
-      await updateData(id: data['id'] as int, data: data, tableName: tableName);
-    } else {
-      await db.insert(tableName, data);
-    }
+    await db.insert(tableName, data);
   }
 
   Future<void> updateData({

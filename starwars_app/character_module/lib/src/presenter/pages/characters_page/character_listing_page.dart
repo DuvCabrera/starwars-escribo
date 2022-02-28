@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../store/store.dart';
 import 'components/body.dart';
 
 class CharacterListingPage extends StatelessWidget {
-  const CharacterListingPage({Key? key, required this.store}) : super(key: key);
-
-  final CharacterStore store;
+  const CharacterListingPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BodyWidget(store: store),
+      body: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: const BodyWidget()),
     );
   }
 }

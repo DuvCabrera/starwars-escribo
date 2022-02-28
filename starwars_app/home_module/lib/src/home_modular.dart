@@ -11,9 +11,9 @@ class HomeModular extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (context, args) => const HomePage(), children: [
-          ModuleRoute('/film/', module: FilmModular()),
-          ModuleRoute('/character/', module: CharacterModular()),
-          ModuleRoute('/favorite/', module: FavoriteModular())
+          ModuleRoute('/film', module: FilmModular()),
+          ModuleRoute('/character', module: CharacterModular()),
+          ModuleRoute('/favorite', module: FavoriteModular())
         ]),
         ChildRoute('/officialsite',
             child: (context, args) => const OfficialSitePage()),

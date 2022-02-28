@@ -1,12 +1,10 @@
 import 'package:favorite_module/src/presenter/pages/favorite_page/components/favorite_listing.dart';
 import 'package:flutter/material.dart';
 
-import '../../../store/store.dart';
-
 class BodyWidget extends StatelessWidget {
-  const BodyWidget({Key? key, required this.store}) : super(key: key);
-
-  final FavoriteStore store;
+  const BodyWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +12,7 @@ class BodyWidget extends StatelessWidget {
     return SingleChildScrollView(
       child: SizedBox(
         height: size.height - 180,
-        child: FavoriteListingWidget(store: store),
+        child: const FavoriteListingWidget(),
       ),
     );
   }

@@ -18,7 +18,7 @@ class FilmModular extends Module {
         Bind<IRemoteHttpClient>((i) => RemoteHttpClient(client: i())),
         Bind<IRequestFilmList>((i) =>
             RequestFilmList(client: i(), url: 'http://swapi.dev/api/films/')),
-        Bind((i) =>
+        Bind<FilmStore>((i) =>
             FilmStore(requestFilms: i(), create: i(), delete: i(), read: i())),
       ];
 

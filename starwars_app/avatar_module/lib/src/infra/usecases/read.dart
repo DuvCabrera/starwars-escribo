@@ -12,11 +12,16 @@ class ReadAvatar extends IReadAvatar {
   ReadAvatar({required this.repository, required this.tableName});
 
   @override
-  Future<AvatarEntity> get() async {
+  Future<AvatarEntity?> get() async {
     final List<Map<String, dynamic>> results = await repository.get(tableName);
-    final List<AvatarEntity> films = results
-        .map<AvatarEntity>((map) => RemoteAvatarModel.fromJson(map).toEntity())
-        .toList();
-    return films[0];
+    try {
+      final List<AvatarEntity> avatar = results
+          .map<AvatarEntity>(
+              (map) => RemoteAvatarModel.fromJson(map).toEntity())
+          .toList();
+      return avatar[0];
+    } catch (e) {
+      return null;
+    }
   }
 }

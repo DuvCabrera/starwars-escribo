@@ -5,26 +5,26 @@ import 'package:flutter/material.dart';
 import '../../../presenter.dart';
 
 class CharacterListingWidget extends StatefulWidget {
-  const CharacterListingWidget({Key? key, required this.store})
-      : super(key: key);
-  final CharacterStore store;
+  const CharacterListingWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<CharacterListingWidget> createState() => _CharacterListingWidgetState();
 }
 
-class _CharacterListingWidgetState extends State<CharacterListingWidget> {
+class _CharacterListingWidgetState
+    extends ModularState<CharacterListingWidget, CharacterStore> {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
-      if (widget.store.characterList.isEmpty) {
-        widget.store.fill();
+      if (store.listFavorite.isEmpty) {
+        store.fill();
         return const ProgressWidget();
       } else {
         return ListViewWidget(
-          isFavorite: widget.store.isFavorite,
-          list: widget.store.characterList,
-          onFavorite: widget.store.likeIt,
+          list: store.listFavorite,
+          onFavorite: store.likeIt,
         );
       }
     });

@@ -3,18 +3,25 @@ import 'package:flutter/material.dart';
 
 import '../../../presenter.dart';
 
-class AppBarWithAvatarSelected extends StatelessWidget {
-  const AppBarWithAvatarSelected(
-      {Key? key, required this.size, required this.store})
-      : super(key: key);
+class AppBarWithAvatarSelected extends StatefulWidget {
+  const AppBarWithAvatarSelected({
+    Key? key,
+    required this.size,
+  }) : super(key: key);
 
   final Size size;
-  final AvatarStore store;
 
+  @override
+  State<AppBarWithAvatarSelected> createState() =>
+      _AppBarWithAvatarSelectedState();
+}
+
+class _AppBarWithAvatarSelectedState
+    extends ModularState<AppBarWithAvatarSelected, AvatarStore> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height * 0.20,
+      height: widget.size.height * 0.20,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -37,7 +44,7 @@ class AppBarWithAvatarSelected extends StatelessWidget {
               child: GestureDetector(
                 onTap: () async {
                   store.fill();
-                  Modular.to.navigate('/');
+                  Modular.to.pop();
                 },
                 child: FluttermojiCircleAvatar(
                   backgroundColor: Colors.amber,

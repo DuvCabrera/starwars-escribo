@@ -21,7 +21,7 @@ abstract class _AvatarStoreBase with Store {
       required this.update});
 
   @observable
-  late AvatarEntity? avatar;
+  AvatarEntity? avatar;
 
   @computed
   AvatarEntity? get avatarGet => avatar;
@@ -55,6 +55,6 @@ abstract class _AvatarStoreBase with Store {
 
   @action
   bool isEmpty() {
-    return avatarGet != null ? true : false;
+    return avatarGet == null ? true : false;
   }
 }

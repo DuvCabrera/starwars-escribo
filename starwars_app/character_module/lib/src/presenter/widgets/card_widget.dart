@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/entities.dart';
-
 class CardWidget extends StatelessWidget {
   const CardWidget({
     required this.character,
@@ -9,7 +7,7 @@ class CardWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   final bool isFavorite;
-  final StarWarsCharacterEntity character;
+  final Map<String, dynamic> character;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,7 @@ class CardWidget extends StatelessWidget {
               child: SizedBox(
                 width: size.width * 0.65,
                 child: Text(
-                  character.name,
+                  character['name'],
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: const TextStyle(

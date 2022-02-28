@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {
-              Modular.to.navigate('/avatar-change');
+              Modular.to.pushNamed('/avatar-change');
             },
             child: FluttermojiCircleAvatar(
               radius: 50,

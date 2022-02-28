@@ -8,14 +8,11 @@ import 'presenter/presenter.dart';
 
 class AvatarModular extends Module {
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute('/',
-            child: (context, args) => AvatarChangePage(store: Modular.get()))
-      ];
+  List<ModularRoute> get routes =>
+      [ChildRoute('/', child: (context, args) => const AvatarChangePage())];
 
   @override
   List<Bind<Object>> get binds => [
-        Bind((i) => AvatarChangePage(store: i())),
         // External
         Bind<ILocalDatabase>((i) =>
             LocalDatabase(create: i(), delete: i(), read: i(), update: i())),

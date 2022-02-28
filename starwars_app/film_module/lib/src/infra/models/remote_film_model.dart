@@ -7,7 +7,7 @@ class RemoteFilmModel implements StarWarsFilmEntity {
   RemoteFilmModel({required this.name});
 
   factory RemoteFilmModel.fromJson(Map<String, dynamic> json) =>
-      RemoteFilmModel(name: json['name']);
+      RemoteFilmModel(name: json['title']);
 
   StarWarsFilmEntity toEntity() => StarWarsFilmEntity(name: name);
 

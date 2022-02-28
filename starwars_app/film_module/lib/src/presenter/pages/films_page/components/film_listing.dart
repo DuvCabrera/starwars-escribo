@@ -16,13 +16,12 @@ class _FilmListingWidgetState
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (context) {
-      if (store.filmList.isEmpty) {
+      if (store.listFavorite.isEmpty) {
         store.fill();
         return const ProgressWidget();
       } else {
         return ListViewWidget(
-          isFavorite: store.isFavorite,
-          list: store.filmList,
+          list: store.listFavorite,
           onFavorite: store.likeIt,
         );
       }

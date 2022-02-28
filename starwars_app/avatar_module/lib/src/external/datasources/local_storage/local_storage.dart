@@ -35,6 +35,6 @@ class LocalDatabase extends ILocalDatabase {
       {required String tableName,
       required Map<String, dynamic> data,
       int? id}) async {
-    await update.update(tableName: tableName, data: data, id: id!);
+    await update.update(tableName: tableName, data: data, id: 1);
   }
 }

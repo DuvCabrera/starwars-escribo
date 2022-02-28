@@ -6,7 +6,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Modular.setInitialRoute('/home');
+    Modular.setInitialRoute('/film');
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'StarWars',

@@ -16,6 +16,7 @@ class AppDatabase {
     return openDatabase(
       path,
       version: 1,
+      onDowngrade: onDatabaseDowngradeDelete,
       onCreate: (Database db, int newerVersion) async {
         await _createAvatarTable(db);
         await _createStarWarsTable(db);
