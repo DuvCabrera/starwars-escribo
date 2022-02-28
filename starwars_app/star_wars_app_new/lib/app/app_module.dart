@@ -4,6 +4,7 @@ import 'package:database_module/database_modular.dart';
 import 'package:dependency_module/dependency_module.dart';
 import 'package:favorite_module/favorite_module.dart';
 import 'package:film_module/film_module.dart';
+import 'package:home_module/official_site_module.dart';
 
 import 'home_page.dart';
 
@@ -16,6 +17,7 @@ class AppModule extends Module {
           ModuleRoute('/film', module: FilmModular()),
         ]),
         ModuleRoute("/avatar-change", module: AvatarModular()),
+        ModuleRoute("/official-site", module: OfficialSiteModular()),
       ];
 
   @override

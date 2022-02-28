@@ -28,8 +28,7 @@ class _AppBarWithAvatarSelectedState
           Padding(
             padding: const EdgeInsets.only(left: 16, bottom: 25),
             child: ElevatedButton(
-              onPressed: () =>
-                  Navigator.of(context).pushNamed('/official-site'),
+              onPressed: () => Modular.to.pushNamed('/official-site'),
               style: ElevatedButton.styleFrom(primary: Colors.black),
               child: const Text(
                 'Site Oficial',

@@ -12,7 +12,8 @@ class HomePage extends StatelessWidget {
     final leadingBar = SizedBox(
         height: size.height * 0.1,
         width: size.width,
-        child: Row(children: [
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Expanded(
             child: ListTile(
               title: const Text('Filmes'),
@@ -21,16 +22,16 @@ class HomePage extends StatelessWidget {
           ),
           Expanded(
             child: ListTile(
-              title: const Text('Favoritos'),
-              onTap: () => Modular.to.navigate('/favorite'),
+              title: const Text('Personagens'),
+              onTap: () => Modular.to.navigate('/character'),
             ),
           ),
           Expanded(
             child: ListTile(
-              title: const Text('Personagens'),
-              onTap: () => Modular.to.navigate('/character'),
+              title: const Text('Favoritos'),
+              onTap: () => Modular.to.navigate('/favorite'),
             ),
-          )
+          ),
         ]));
 
     return Scaffold(
@@ -38,7 +39,7 @@ class HomePage extends StatelessWidget {
         title: ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Colors.black),
             onPressed: () {
-              Modular.to.navigate('/officialsite');
+              Modular.to.pushNamed('/official-site');
             },
             child: const Text(
               'Site Oficial',

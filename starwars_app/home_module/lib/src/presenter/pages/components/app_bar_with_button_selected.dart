@@ -1,5 +1,5 @@
+import 'package:dependency_module/dependency_module.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 
 class AppBarWithButtonSelectedWidget extends StatelessWidget {
   const AppBarWithButtonSelectedWidget({Key? key, required this.size})
@@ -17,8 +17,7 @@ class AppBarWithButtonSelectedWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 16, top: 0),
             child: ElevatedButton(
-              onPressed: () =>
-                  Navigator.popUntil(context, ModalRoute.withName('/')),
+              onPressed: () => Modular.to.pop(),
               style: ElevatedButton.styleFrom(primary: Colors.amber),
               child: const Text(
                 'Site Oficial',

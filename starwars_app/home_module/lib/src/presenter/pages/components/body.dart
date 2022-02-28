@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:home_module/src/features/official_site/presenter/pages/components/web_page.dart';
 import 'app_bar_with_button_selected.dart';
+import 'web_page.dart';
 
 class BodyWidget extends StatelessWidget {
   const BodyWidget({Key? key}) : super(key: key);
