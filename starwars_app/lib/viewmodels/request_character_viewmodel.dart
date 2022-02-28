@@ -6,13 +6,16 @@ import 'package:starwars_app/services/htpp_client_service.dart';
 
 class RequestCharacterViewModel extends ChangeNotifier{
 
-  final ICharacterRepository repository = CharacterRepository(HttpClientService());
+  ICharacterRepository repository = CharacterRepository(HttpClientService());
 
   ListCharacter? listCharacter;
 
   fill() async {
-    listCharacter = await repository.getCharacters();
-    notifyListeners();
+    try{
+      listCharacter = await repository.getCharacters();
+      notifyListeners();
+    }catch (e) {
+      print(e);
+    }
   }
-
 }

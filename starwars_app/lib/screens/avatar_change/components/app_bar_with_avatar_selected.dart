@@ -34,7 +34,7 @@ class AppBarWithAvatarSelected extends StatelessWidget {
               width: 55,
               child: GestureDetector(
                 onTap: () async {
-                  avatar.startAvatar();
+                  avatar.fill();
                   Navigator.popUntil(context, ModalRoute.withName('/') );
                 },
                 child: FluttermojiCircleAvatar(

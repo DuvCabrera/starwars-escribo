@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 
@@ -16,14 +15,25 @@ class AppBarWithButtonSelectedWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 16,top: 0),
-            child: ElevatedButton(onPressed: () => Navigator.popUntil(context, ModalRoute.withName('/')),style: ElevatedButton.styleFrom(primary: Colors.amber), child: const Text('Site Oficial',style: TextStyle(color: Colors.black),),),
+            padding: const EdgeInsets.only(left: 16, top: 0),
+            child: ElevatedButton(
+              onPressed: () =>
+                  Navigator.popUntil(context, ModalRoute.withName('/')),
+              style: ElevatedButton.styleFrom(primary: Colors.amber),
+              child: const Text(
+                'Site Oficial',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 24.0),
             child: SizedBox(
               width: 55,
-              child: GestureDetector(onTap: () {Navigator.of(context).pushNamed('/avatar-change');},
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed('/avatar-change');
+                },
                 child: FluttermojiCircleAvatar(
                   radius: 75,
                 ),
